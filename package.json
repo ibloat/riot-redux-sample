@@ -16,6 +16,8 @@
     "watch:js": "watchify -d src/code/index.js -o dist/app.js",
     "watch:css": "stylus -w -m src/styles/app.styl -o dist/app.css",
     "watch:tmpl": "jade -w src/templates/*.jade --out dist",
+    "test": "browserify test/index.js --node | node | faucet",
+    "test:browser": "browserify test/index.js | browser-run | faucet",
     "security": "nsp package"
   },
   "repository": {
