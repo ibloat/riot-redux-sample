@@ -1,2 +1,0 @@
-bp-app
-  bp-counter

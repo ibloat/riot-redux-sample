@@ -6,7 +6,12 @@ Using [reselect](https://github.com/rackt/reselect) as memoizing selector librar
 
 ```
 npm install
-npm build
+
+# build
+npm run build
 # or if you want to watch for changes.
-npm watch
+npm run watch
+
+# serve files in build directory
+npm run serve
 ```

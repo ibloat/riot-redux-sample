@@ -1,24 +1,13 @@
 {
   "name": "riot-redux-sample",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Showing how to use riot-redux-mixin to connect riot tags with a redux store",
-  "main": "src/code/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "lint": "standard src/code/**.js | snazzy",
-    "release": "rm dist/* && npm run build:tmpl & NODE_ENV=production npm run build:min:js & npm run build:min:css",
-    "build": "npm run build:js & npm run build:css & npm run build:tmpl",
-    "build:js": "browserify -d src/code/index.js -o dist/app.js",
-    "build:min:js": "browserify src/code/index.js | uglifyjs -o dist/app.js",
-    "build:css": "stylus -m src/styles/app.styl -o dist/app.css",
-    "build:min:css": "stylus < src/styles/app.styl | cleancss -o dist/app.css",
-    "build:tmpl": "jade -P src/templates/*.jade --out dist",
-    "watch": "npm run watch:js & npm run watch:css & npm run watch:tmpl",
-    "watch:js": "watchify -d src/code/index.js -o dist/app.js",
-    "watch:css": "stylus -w -m src/styles/app.styl -o dist/app.css",
-    "watch:tmpl": "jade -w src/templates/*.jade --out dist",
-    "test": "browserify test/index.js --node | node | faucet",
-    "test:browser": "browserify test/index.js | browser-run | faucet",
-    "security": "nsp package"
+    "build": "rollup -c --output build/bundle.js",
+    "watch": "rollup -c --watch --output build/bundle.js",
+    "serve": "superstatic build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -26,49 +15,21 @@
   },
   "author": "ibloat",
   "license": "ISC",
-  "dependencies": {
-    "is-object": "^1.0.1",
-    "redux": "^3.0.4",
-    "reselect": "^2.0.0",
-    "riot": "^2.2.4",
-    "riot-redux-mixin": "0.0.1"
-  },
   "devDependencies": {
-    "babel": "^5.8.29",
-    "babel-runtime": "^5.8.29",
-    "babelify": "^6.3.0",
-    "browser-run": "^2.6.2",
-    "browserify": "^11.2.0",
-    "clean-css": "^3.4.6",
-    "coverify": "^1.4.1",
-    "envify": "^3.4.0",
-    "faucet": "0.0.1",
-    "jade": "^1.11.0",
-    "nsp": "^1.1.0",
-    "phantomjs": "^1.9.18",
-    "riotify": "^0.1.2",
-    "snazzy": "^2.0.1",
-    "standard": "^5.3.1",
-    "stylus": "^0.52.4",
-    "tape": "^4.2.1",
-    "uglifyjs": "^2.4.10",
-    "watchify": "^3.5.0"
+    "riot": "^2.5.0",
+    "rollup": "^0.34.1",
+    "rollup-plugin-browserify-transform": "^0.1.0",
+    "rollup-plugin-buble": "^0.12.1",
+    "rollup-plugin-commonjs": "^3.3.0",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-riot": "^0.4.0",
+    "rollup-watch": "^2.5.0",
+    "superstatic": "^4.0.3"
   },
-  "browserify": {
-    "extensions": [
-      ".js",
-      ".tag"
-    ],
-    "transform": [
-      [
-        "riotify",
-        {
-          "type": "es6",
-          "template": "jade"
-        }
-      ],
-      "babelify",
-      "envify"
-    ]
+  "dependencies": {
+    "redux": "^3.5.2",
+    "reselect": "^2.5.3",
+    "riot-redux-mixin": "^1.0.0"
   }
 }
