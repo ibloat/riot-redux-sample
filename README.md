@@ -1,4 +1,4 @@
-riot-redux-sample
+riot-redux-sample (archived)
 =================
 
 Showing how to use [riot-redux-mixin](https://github.com/ibloat/riot-redux-mixin) to connect riot tags with a redux store.
